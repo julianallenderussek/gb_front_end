@@ -24,7 +24,8 @@ export const TweeterContainer = (props) => {
 
     const addComment = (event) => {
         event.preventDefault();
-        const input = document.getElementById("comment-input")
+        console.log(tweet)
+        const input = document.getElementById(`comment-input-${tweet.id}`)
         const timeElapsed = Date.now();
         const rightNow = new Date(timeElapsed);
         
@@ -45,7 +46,7 @@ export const TweeterContainer = (props) => {
     <Card className="mt-5 p-4">
         <h2>{tweet.title}</h2>
         <form className='d-flex justify-content-center' style={{height: '35px'}}  onSubmit={(event) => addComment(event)}>
-            <input className='input-group w-75' id="comment-input"/>
+            <input className='input-group w-75' id={`comment-input-${tweet.id}`}/>
             <button type='submit'>Post</button> 
         </form>
         
