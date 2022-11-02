@@ -25,7 +25,6 @@ export const TweeterContainer = (props) => {
     const addComment = (event) => {
         event.preventDefault();
         const input = document.getElementById("comment-input")
-        
         const timeElapsed = Date.now();
         const rightNow = new Date(timeElapsed);
         
@@ -38,7 +37,7 @@ export const TweeterContainer = (props) => {
         let newTweet = {
             ...tweet
         }
-        newTweet.comments.push(newComment)
+        newTweet.comments.unshift(newComment)
         setTweet(newTweet)
     }
 

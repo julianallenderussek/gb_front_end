@@ -4,20 +4,26 @@ import uuid from 'react-uuid';
 
 function App() {
   
+  const formattedDate = (time) => {
+    const timeElapsed = time;
+    const rightNow = new Date(timeElapsed);
+    return rightNow
+  }
+
   let tweets = [
     { id: uuid(),
       title: "Stop COVID-19, Take-out only",
       comments: [
         { 
           id: uuid(),
-          content: "This is my first comment",
-          created_at: "12-23-43",
+          content: "Newest Comment",
+          created_at: formattedDate(Date.now()),
           likes: 2
         },
         { 
           id: uuid(),
-          content: "Second Comment",
-          created_at: "12-20-55",
+          content: "Older Comment",
+          created_at: formattedDate(Date.now() - 5000000),
           likes: 2
         }
       ]
