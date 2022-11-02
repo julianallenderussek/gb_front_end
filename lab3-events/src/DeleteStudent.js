@@ -1,21 +1,28 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 
-export default class AddStudent extends Component {
+export default class DeleteStudent extends Component {
+    constructor(props) {
+      super(props)
+      this.deleteUser = props.deleteUser
+    }
+
     state = {
         id: this.props.id 
     }
-    
-    handleSubmit = (e) => { 
+  
+    handleSubmit = async (e) => { 
         e.preventDefault()
-        console.log(this.state.id )
-        axios.delete(`https://jsonplaceholder.typicode.com/users/${this.state.id}`)
+        await axios.delete(`https://jsonplaceholder.typicode.com/users/${this.state.id}`)
           .then(function (response) {
             console.log(response);
           })
           .catch(function (error) {
             console.log(error);
-          });
+          }).then(() => {
+            console.log(this.state.id);
+            this.deleteUser(this.state.id);
+          })
     }
 
     render() {
